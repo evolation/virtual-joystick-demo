@@ -3,6 +3,7 @@ package io.github.controlwear.joystickdemo;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.TextView;
 
 import io.github.controlwear.virtual.joystick.android.JoystickView;
@@ -28,12 +29,20 @@ public class MainActivity extends AppCompatActivity {
         mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
 
         JoystickView joystickLeft = (JoystickView) findViewById(R.id.joystickView_left);
+
         joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
             @Override
             public void onMove(int angle, int strength) {
                 mTextViewAngleLeft.setText(angle + "°");
                 mTextViewStrengthLeft.setText(strength + "%");
-                controller.updateSpeed(strength);
+                int normalize_steering = 0;
+                if ((angle > 90) || (angle < 270)){
+                    normalize_steering = -strength * 10;
+                }else{
+                    normalize_steering = strength * 10;
+                }
+                controller.updateSteering(normalize_steering);
+                Log.i("TAG","Steering :"+normalize_steering);
             }
         });
 
@@ -47,14 +56,21 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onMove(int angle, int strength) {
-                controller.updateSteering(angle);
+
+                int speed = 0;
+                if (angle > 180){
+                    speed = -(strength * 10);
+                }
+                else
+                {
+                    speed = (strength * 10);
+                }
+                controller.updateSpeed(speed);
+                Log.i("TAG","Speed :"+ speed);
+
                 mTextViewAngleRight.setText(angle + "°");
                 mTextViewStrengthRight.setText(strength + "%");
-                mTextViewCoordinateRight.setText(
-                        String.format("x%03d:y%03d",
-                                joystickRight.getNormalizedX(),
-                                joystickRight.getNormalizedY())
-                );
+
             }
         });
     }

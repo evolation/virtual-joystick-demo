@@ -44,7 +44,7 @@ public class BackgroundHC05 implements Runnable {
         short crc = (short)(frame[0]^frame[1]^frame[2]^frame[3]^frame[4]^frame[5]^frame[6]^frame[7]);
         frame[6] = (byte) (crc & 0xff);
         frame[7] = (byte) ((crc & 0xffff) >> 8);
-        Log.i("TAG",bytesToHex(frame));
+//        Log.i("TAG",bytesToHex(frame));
     }
 
 
