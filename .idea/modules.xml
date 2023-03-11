@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/virtual-joystick-demo.iml" filepath="$PROJECT_DIR$/.idea/virtual-joystick-demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/virtual-joystick-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/virtual-joystick-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.androidTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/virtual-joystick-demo.app.main.iml" />

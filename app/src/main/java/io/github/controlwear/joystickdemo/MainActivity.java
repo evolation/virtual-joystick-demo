@@ -16,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
-
+    private BackgroundHC05 controller ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        controller= new BackgroundHC05();
+        controller.start();
         mTextViewAngleLeft = (TextView) findViewById(R.id.textView_angle_left);
         mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
 
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             public void onMove(int angle, int strength) {
                 mTextViewAngleLeft.setText(angle + "°");
                 mTextViewStrengthLeft.setText(strength + "%");
+                controller.updateSpeed(strength);
             }
         });
 
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("DefaultLocale")
             @Override
             public void onMove(int angle, int strength) {
+                controller.updateSteering(angle);
                 mTextViewAngleRight.setText(angle + "°");
                 mTextViewStrengthRight.setText(strength + "%");
                 mTextViewCoordinateRight.setText(
@@ -54,5 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 );
             }
         });
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        controller.stop();
     }
 }
