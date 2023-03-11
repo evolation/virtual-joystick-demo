@@ -36,13 +36,13 @@ public class MainActivity extends AppCompatActivity {
                 mTextViewAngleLeft.setText(angle + "°");
                 mTextViewStrengthLeft.setText(strength + "%");
                 int normalize_steering = 0;
-                if ((angle > 90) || (angle < 270)){
+                if (angle == 180){
                     normalize_steering = -strength * 10;
                 }else{
                     normalize_steering = strength * 10;
                 }
                 controller.updateSteering(normalize_steering);
-                Log.i("TAG","Steering :"+normalize_steering);
+//                Log.i("TAG","Steering :"+normalize_steering);
             }
         });
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     speed = (strength * 10);
                 }
                 controller.updateSpeed(speed);
-                Log.i("TAG","Speed :"+ speed);
+//                Log.i("TAG","Speed :"+ speed);
 
                 mTextViewAngleRight.setText(angle + "°");
                 mTextViewStrengthRight.setText(strength + "%");
