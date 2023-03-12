@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
+    android:id="@+id/mainLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -26,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView_strength_left"
-        android:text="STEER"/>
+        android:text=""/>
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
         xmlns:custom="http://schemas.android.com/apk/res-auto"
@@ -35,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_margin="32dp"
-        android:background="@drawable/joystick_background"
+        android:background="@drawable/steering"
         custom:JV_buttonImage="@drawable/pink_ball"
         custom:JV_buttonDirection="horizontal"
         custom:JV_fixedCenter="false"/>
@@ -64,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/textView_strength_right"
-        android:text="SPEED"/>
+        android:text=""/>
 
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
@@ -74,11 +75,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="64dp"
-        custom:JV_borderWidth="8dp"
-        custom:JV_backgroundColor="#009688"
+        android:layout_marginTop="32dp"
         custom:JV_buttonDirection="vertical"
-        custom:JV_borderColor="#00796B"
-        custom:JV_buttonColor="#FF6E40"/>
+        android:layout_margin="32dp"
+        android:background="@drawable/joystick_background"
+        custom:JV_buttonImage="@drawable/pink_ball"/>
 
 </RelativeLayout>

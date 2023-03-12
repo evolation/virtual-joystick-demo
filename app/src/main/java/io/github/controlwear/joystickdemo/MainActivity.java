@@ -1,5 +1,6 @@
 package io.github.controlwear.joystickdemo;
 
+import static android.graphics.Color.GREEN;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 import android.annotation.SuppressLint;
@@ -10,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextViewAngleRight;
     private TextView mTextViewStrengthRight;
     private TextView mTextViewCoordinateRight;
+
+    private RelativeLayout layout ;
     private BackgroundHC05 controller ;
 
     private BluetoothSocket m_btSocket;
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        layout = (RelativeLayout)findViewById(R.id.mainLayout);
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         btDevice = btAdapter.getRemoteDevice(SERVICE_ADDRESS);
         if(btAdapter == null) {
@@ -55,11 +59,12 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 ConnectThread connectThread = new ConnectThread(btDevice);
                 connectThread.start();
+
             }
         }
 
 
-        controller = new BackgroundHC05();
+        controller = new BackgroundHC05(layout);
 //        controller.start(null);
         mTextViewAngleLeft = (TextView) findViewById(R.id.textView_angle_left);
         mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
@@ -77,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     normalize_steering = strength * 10;
                 }
-                controller.updateSteering(normalize_steering);
+                controller.updateSteering(normalize_steering / 20);
 //                Log.i("TAG","Steering :"+normalize_steering);
             }
         });
@@ -101,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     speed = (strength * 10);
                 }
-                controller.updateSpeed(speed);
+                controller.updateSpeed(speed / 20);
 //                Log.i("TAG","Speed :"+ speed);
 
                 mTextViewAngleRight.setText(angle + "°");
