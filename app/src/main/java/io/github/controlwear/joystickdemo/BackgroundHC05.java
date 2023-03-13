@@ -12,10 +12,6 @@ import java.nio.ByteBuffer;
 
 public class BackgroundHC05 implements Runnable {
 
-    public BackgroundHC05(RelativeLayout p_layout) {
-        this.layout = p_layout;
-    }
-    private RelativeLayout layout;
     Thread backgroundThread;
     private int m_speed;
     private int m_steering;
@@ -27,7 +23,7 @@ public class BackgroundHC05 implements Runnable {
             try {
                 if (p_btSocket != null){
                     m_outStream = p_btSocket.getOutputStream();
-                    layout.setBackgroundColor(GREEN);
+//                    layout.setBackgroundColor(GREEN);
                 }
             } catch (IOException e) {
                 throw new RuntimeException(e);

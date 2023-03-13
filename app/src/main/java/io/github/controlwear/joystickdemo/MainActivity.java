@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        controller = new BackgroundHC05(layout);
+        controller = new BackgroundHC05();
 //        controller.start(null);
         mTextViewAngleLeft = (TextView) findViewById(R.id.textView_angle_left);
         mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
@@ -82,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 }else{
                     normalize_steering = strength * 10;
                 }
-                controller.updateSteering(normalize_steering / 20);
+                controller.updateSteering(normalize_steering / 10);
 //                Log.i("TAG","Steering :"+normalize_steering);
             }
         });
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     speed = (strength * 10);
                 }
-                controller.updateSpeed(speed / 20);
+                controller.updateSpeed(speed / 10);
 //                Log.i("TAG","Speed :"+ speed);
 
                 mTextViewAngleRight.setText(angle + "°");
