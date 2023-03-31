@@ -8,9 +8,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -35,13 +37,19 @@ public class MainActivity extends AppCompatActivity {
     public static final String SERVICE_ADDRESS = "98:D3:61:F6:C8:FC"; // HC-05 BT ADDRESS
 
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         layout = (RelativeLayout)findViewById(R.id.mainLayout);
         WebView webView = (WebView) findViewById(R.id.webview);
+        webView.getSettings().setLoadWithOverviewMode(true);
+        webView.getSettings().setUseWideViewPort(true);
+        webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("http://192.168.0.13:8000/index.html");
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();

@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="io.github.controlwear.joystickdemo.MainActivity"
-    android:padding="16dp">
+    android:padding="1dp">
 
     <WebView
         android:id="@+id/webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scrollbars="none"
         />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
