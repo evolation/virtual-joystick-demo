@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,77 +8,42 @@
     tools:context="io.github.controlwear.joystickdemo.MainActivity"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textView_angle_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0°"/>
-
-
-    <TextView
-        android:id="@+id/textView_strength_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView_angle_left"
-        android:text="0%"/>
-    <TextView
-        android:id="@+id/textView_coordinate_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView_strength_left"
-        android:text=""/>
+    <WebView
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:id="@+id/joystickView_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="32dp"
-        android:background="@drawable/steering"
-        custom:JV_buttonImage="@drawable/pink_ball"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
         custom:JV_buttonDirection="horizontal"
-        custom:JV_fixedCenter="false"/>
-
-
-    <TextView
-        android:id="@+id/textView_angle_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="0°"/>
-
-
-    <TextView
-        android:id="@+id/textView_strength_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView_angle_right"
-        android:text="0%"/>
-
-
-    <TextView
-        android:id="@+id/textView_coordinate_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView_strength_right"
-        android:text=""/>
-
+        custom:JV_buttonImage="@drawable/pink_ball"
+        custom:JV_fixedCenter="false" />
 
     <io.github.controlwear.virtual.joystick.android.JoystickView
-        xmlns:custom="http://schemas.android.com/apk/res-auto"
         android:id="@+id/joystickView_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginBottom="32dp"
         custom:JV_buttonDirection="vertical"
-        android:layout_margin="32dp"
-        android:background="@drawable/joystick_background"
-        custom:JV_buttonImage="@drawable/pink_ball"/>
+        custom:JV_buttonImage="@drawable/pink_ball" />
 
 </RelativeLayout>

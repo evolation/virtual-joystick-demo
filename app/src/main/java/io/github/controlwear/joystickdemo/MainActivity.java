@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,14 +22,6 @@ import java.util.UUID;
 import io.github.controlwear.virtual.joystick.android.JoystickView;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    private TextView mTextViewAngleLeft;
-    private TextView mTextViewStrengthLeft;
-
-    private TextView mTextViewAngleRight;
-    private TextView mTextViewStrengthRight;
-    private TextView mTextViewCoordinateRight;
 
     private RelativeLayout layout ;
     private BackgroundHC05 controller ;
@@ -48,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         layout = (RelativeLayout)findViewById(R.id.mainLayout);
+        WebView webView = (WebView) findViewById(R.id.webview);
+        webView.loadUrl("http://192.168.0.13:8000/index.html");
+
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         btDevice = btAdapter.getRemoteDevice(SERVICE_ADDRESS);
         if(btAdapter == null) {
@@ -65,17 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         controller = new BackgroundHC05();
-//        controller.start(null);
-        mTextViewAngleLeft = (TextView) findViewById(R.id.textView_angle_left);
-        mTextViewStrengthLeft = (TextView) findViewById(R.id.textView_strength_left);
-
         JoystickView joystickLeft = (JoystickView) findViewById(R.id.joystickView_left);
 
         joystickLeft.setOnMoveListener(new JoystickView.OnMoveListener() {
             @Override
             public void onMove(int angle, int strength) {
-                mTextViewAngleLeft.setText(angle + "°");
-                mTextViewStrengthLeft.setText(strength + "%");
+
                 int normalize_steering = 0;
                 if (angle == 180){
                     normalize_steering = -strength * 10;
@@ -87,10 +78,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        mTextViewAngleRight = (TextView) findViewById(R.id.textView_angle_right);
-        mTextViewStrengthRight = (TextView) findViewById(R.id.textView_strength_right);
-        mTextViewCoordinateRight = findViewById(R.id.textView_coordinate_right);
 
         final JoystickView joystickRight = (JoystickView) findViewById(R.id.joystickView_right);
         joystickRight.setOnMoveListener(new JoystickView.OnMoveListener() {
@@ -106,11 +93,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     speed = (strength * 10);
                 }
-                controller.updateSpeed(speed / 10);
-//                Log.i("TAG","Speed :"+ speed);
 
-                mTextViewAngleRight.setText(angle + "°");
-                mTextViewStrengthRight.setText(strength + "%");
+                controller.updateSpeed(speed / 10);
 
             }
         });
