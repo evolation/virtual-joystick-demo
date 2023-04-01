@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Joystick Demo</string>
+    <string name="app_name">HoverCAM</string>
     <string name="title_activity_main0">MainActivity0</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         webView.getSettings().setLoadWithOverviewMode(true);
         webView.getSettings().setUseWideViewPort(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://192.168.0.13:8000/index.html");
+        webView.loadUrl("http://192.168.43.202:8000/index.html");
 
         btAdapter = BluetoothAdapter.getDefaultAdapter();
         btDevice = btAdapter.getRemoteDevice(SERVICE_ADDRESS);
